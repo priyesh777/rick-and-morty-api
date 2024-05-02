@@ -12,6 +12,24 @@ const Home: NextPage = () => {
 
     const [newSearch, setNewSearch] = useState<string>("");
     const [message, setMessage] = useState<string>("");
+    const [apiData, setApiData] = useState();
+
+    const FetchApiData = async () => {
+        try {
+            const response = await fetch('https://rickandmortyapi.com/api/character')
+            if (!response.ok) {
+                console.log("error in fetching data::>>");
+                throw new Error('Failed to fetch data !')
+            }
+            const data = await response.json()
+            console.log("The received data::>>", data.results);
+            setApiData(data.results);
+            setMessage("Freshly fetched new data list");
+        } catch (error) {
+            console.log("Some failure in the data fetch::>>", error);
+            setMessage("Sorry could not fetch Data at the moment !");
+        }
+    }
 
     useEffect(() => {
         FetchApiData();
@@ -37,7 +55,7 @@ const Home: NextPage = () => {
 
             <Header message={message} />
             <SearchInput value={newSearch} handleClick={handleClick} handleChange={handleChange} />
-            <DataCollection />
+            <DataCollection apiData={apiData} />
             <Footer />
         </div>
     )

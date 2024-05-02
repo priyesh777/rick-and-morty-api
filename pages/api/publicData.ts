@@ -14,6 +14,7 @@ export async function FetchApiData() {
         }
         const data = await response.json()
         console.log("The received data::>>", data);
+        return data;
     } catch (error) {
         console.log("Some failure in the data fetch::>>", error);
         throw new Error("Failed the data fetch process !!");
