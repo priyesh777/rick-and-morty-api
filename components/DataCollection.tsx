@@ -1,6 +1,7 @@
 import React from "react";
+import { Card } from "./Card";
 
-interface CharacterInfo {
+export interface CharacterInfo {
     id: number;
     name: string;
     location: {
@@ -11,25 +12,33 @@ interface CharacterInfo {
     }
     species: string;
     status: string;
+    created: string;
+    url: string;
+    image: string;
 }
 
-interface Props {
+export interface ApiDataProps {
     apiData: CharacterInfo[] | undefined;
 }
 
-function DataCollection(props: Props) {
+function DataCollection(props: ApiDataProps) {
 
     const { apiData } = props;
+    console.log("The following API DATA PROPS::>>", apiData);
 
     return (
-        <div className="flex flex-wrap items-center mt-4 mx-auto px-4 bg-[#343650]">
+        <div className="flex flex-wrap justify-between items-start mt-4 mx-auto p-2 bg-[#343650] w-full">
             {apiData ? (
                 <>
-                    {apiData.map((item) => {
-                        <div className="flex flex-wrap items-center mx-auto px-4">
-                            {item.name}
-                        </div>
-                    })}
+                    {apiData.map((item) => (
+                        //<div className="flex flex-wrap items-center text-red-400">
+                        //    {item.name}
+                        //</div>
+                        <Card
+                            data={item}
+                            description={item.origin.name ?? ""}
+                        />
+                    ))}
                 </>
             ) : (
                 <div className="flex flex-wrap items-center mx-auto px-4">
