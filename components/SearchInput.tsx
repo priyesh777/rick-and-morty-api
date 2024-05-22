@@ -1,19 +1,27 @@
 import React from 'react'
 
 interface inputProps {
-    value: string,
+    value: string | undefined,
     handleClick(): void,
     handleChange(e: any): void,
 }
 
 export const SearchInput = ({ value, handleClick, handleChange }: inputProps) => {
+
+    const handleKeyPress = (event) => {
+        if (event.key === 'Enter') {
+            handleClick();
+        }
+    };
+
     return (
         <div className="z-6 mx-auto space-y-4 flex flex-col md:flex-row justify-center items-center md:space-y-0">
             <input
-                className="text-xl md:text-2xl font-redhat outline-none px-2 py-1 w-80 rounded-lg mr-4 "
+                className="text-xl md:text-xl font-redhat outline-none px-2 py-1 w-80 rounded-lg mr-4 "
                 name="searchData"
-                type="text"
+                type="search"
                 placeholder="Search ..."
+                onKeyPress={handleKeyPress}
                 value={value}
                 onChange={handleChange}
             />

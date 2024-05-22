@@ -42,7 +42,9 @@ function DataCollection(props: ApiDataProps) {
                 </>
             ) : (
                 <div className="flex flex-wrap items-center mx-auto px-4">
-                    SORRY COULD NOT FETCH DATA RIGHT NOW !
+                    <h1>
+                        NO DATA AVAILABLE !
+                    </h1>
                 </div>
             )
             }

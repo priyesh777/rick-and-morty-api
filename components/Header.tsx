@@ -1,7 +1,7 @@
 import React from 'react'
 
 interface Props {
-    message: string,
+    message: string | undefined,
 };
 
 export const Header = ({ message }: Props) => {
