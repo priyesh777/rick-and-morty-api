@@ -8,7 +8,8 @@ interface inputProps {
 
 export const SearchInput = ({ value, handleClick, handleChange }: inputProps) => {
 
-    const handleKeyPress = (event) => {
+    //Temporarily used the "any" type for deployment purposes
+    const handleKeyPress = (event: any) => {
         if (event.key === 'Enter') {
             handleClick();
         }

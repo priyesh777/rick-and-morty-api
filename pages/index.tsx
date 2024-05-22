@@ -49,7 +49,7 @@ const Home: NextPage = () => {
         }
     };
 
-    const handleChange = (e) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         console.log('INPUT ADDED!!', e.target.value);
         setNewSearch(e.target.value);
 
