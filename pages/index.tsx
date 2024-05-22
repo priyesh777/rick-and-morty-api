@@ -24,7 +24,7 @@ const Home: NextPage = () => {
             const data = await response.json()
             console.log("The received data::>>", data.results);
             setApiData(data.results);
-            setMessage("Freshly fetched new data list");
+            setMessage("Newly fetched data list");
         } catch (error) {
             console.log("Some failure in the data fetch::>>", error);
             setMessage("Sorry could not fetch Data at the moment !");

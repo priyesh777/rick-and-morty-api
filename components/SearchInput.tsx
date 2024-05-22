@@ -1,6 +1,5 @@
 import React from 'react'
 
-
 interface inputProps {
     value: string,
     handleClick(): void,
